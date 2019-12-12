@@ -2,9 +2,61 @@
 
 ![car](readmeimages/car.jpg)
 
+## Setting Up ROS workspace
+
+We will be using the usb_cam ros package (http://wiki.ros.org/usb_cam).
+
+You will also need the web_video_server package.  This should be a dependancy of the usb_cam package and should be installed, but if not, here is the source (http://wiki.ros.org/web_video_server)
+
+Adjust the launch file to look like this:
+```
+
+```
+
+Make sure ros is fully installed on your raspberry pi.
+To set up the car workspace
+
+```
+mkdir ~/catkin_ws
+cd ~/catkin_ws
+catkin_make
+source devel/setup.bash
+
+cd src
+git clone https://github.com/DonStoddard5/templecarmk3.git
+cd ../
+catkin_make
+source devel/setup.bash
+```
+
 ## Starting the program
 
-1) 
+Each of these sections should be run in separate terminals.  The purpose of each of these scripts is listed below.
+
+### 1. 
+```
+roscore
+```
+### 2. 
+```
+cd ~/catkin_ws
+roslaunch usb_cam usb_cam-test.launch
+```
+### 3.
+```
+cd ~/catkin_ws
+rosrun templecar runcar.py
+```
+### 4. 
+```
+cd ~/catkin_ws
+rosrun templecar collectData.py <filename.csv>
+```
+### 5. 
+```
+cd ~/catkin_ws
+rosrun templecar keyboard_input.py
+```
 
 ## Controling the Car
 
