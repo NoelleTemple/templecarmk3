@@ -9,8 +9,22 @@ We will be using the usb_cam ros package (http://wiki.ros.org/usb_cam).
 You will also need the web_video_server package.  This should be a dependancy of the usb_cam package and should be installed, but if not, here is the source (http://wiki.ros.org/web_video_server)
 
 Adjust the launch file to look like this:
-```
-
+```                                     
+<launch>
+  <node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video0" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="web_cam" pkg="web_video_server" type="web_video_server" output="screen" />
+  <!--node name="image_view" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam/image_raw"/>
+    <param name="autosize" value="true" />
+  </node-->
+</launch>
 ```
 
 Make sure ros is fully installed on your raspberry pi.
