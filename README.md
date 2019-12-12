@@ -10,9 +10,9 @@
 
 The car uses modified WASD controls to move. See "test.py" below.
 
-W/A moves the car forwards and back
+W/S moves the car forwards and back
 
-A/S turn the wheels
+A/D turn the wheels
 
 Q/E turn the wheels and move the car forward simutaneously
 
